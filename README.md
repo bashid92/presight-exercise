@@ -1,30 +1,5 @@
 # Presight Frontend Exercise
 
-## How to run
-
-Needs Node.js 20+ (or Docker).
-
-```bash
-npm install
-npm run dev
-```
-
-- Client: http://localhost:3000
-- API: http://localhost:5001 (seeds 3,000 users into SQLite on first start)
-
-With Docker:
-
-```bash
-docker compose up --build
-```
-
-Tests: `npm test`. Full setup, seeding, API and design notes: [runBook.md](runBook.md).
-Architecture diagrams: [ARCHITECTURE.md](ARCHITECTURE.md).
-
----
-
-## Exercise brief
-
 Build a small full-stack user directory application. The goal is to evaluate how you design a searchable, filterable, paginated UI backed by persisted data and clear API boundaries.
 
 The application should include:

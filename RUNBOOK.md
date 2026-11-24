@@ -4,6 +4,26 @@ How to install, seed, run and test the application, locally and with Docker,
 plus the design decisions behind the API and the client.
 The architecture diagrams are in [ARCHITECTURE.md](ARCHITECTURE.md).
 
+## How to run
+
+Needs Node.js 20+ (or Docker).
+
+```bash
+npm install
+npm run dev
+```
+
+- Client: http://localhost:3000
+- API: http://localhost:5001 (seeds 3,000 users into SQLite on first start)
+
+With Docker:
+
+```bash
+docker compose up --build
+```
+
+Tests: `npm test`. The sections below have the full details.
+
 ---
 
 ## 1. Quick start
@@ -21,7 +41,7 @@ presight-execise/
 │   └── data/            SQLite file, created on first run (git-ignored)
 ├── docker-compose.yml
 ├── ARCHITECTURE.md      diagrams
-└── runBook.md           this file
+└── RUNBOOK.md           this file
 ```
 
 ---
