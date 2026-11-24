@@ -1,0 +1,31 @@
+services:
+  server:
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    container_name: presight-server
+    ports:
+      - "5001:5001"
+    environment:
+      - PORT=5001
+      - DB_PATH=/app/data/presight.db
+      - SEED_COUNT=3000
+    volumes:
+      # SQLite file lives in a named volume, so data survives container restarts and rebuilds.
+      - presight-data:/app/data
+    restart: unless-stopped
+
+  client:
+    build:
+      context: .
+      dockerfile: client/Dockerfile
+    container_name: presight-client
+    ports:
+      - "3000:80"
+    depends_on:
+      server:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  presight-data:

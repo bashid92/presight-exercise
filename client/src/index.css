@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+/*
+ * Directory styles. Tailwind utilities do most of the work; the few
+ * repeated patterns (card, chips, facet rows) are named here once.
+ */
+
+@theme {
+  --font-sans: Roboto, ui-sans-serif, system-ui, sans-serif;
+  --animate-pop-in: pop-in 0.25s ease-out both;
+
+  @keyframes pop-in {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@layer base {
+  body {
+    @apply min-h-screen bg-slate-50 font-sans text-slate-900 antialiased;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-slate-300) var(--color-slate-100);
+  }
+}
+
+@layer components {
+  .panel {
+    @apply rounded-2xl border border-slate-200/80 bg-white shadow-xs;
+  }
+
+  .profile-card {
+    @apply flex h-full flex-col justify-between rounded-2xl border border-slate-200 bg-white p-4 shadow-[0_1px_3px_0_rgb(0_0_0/0.05)] transition-all duration-200 ease-[cubic-bezier(0.16,1,0.3,1)];
+    @apply hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-[0_10px_25px_-5px_rgb(15_23_42/0.08),0_8px_10px_-6px_rgb(15_23_42/0.04)];
+    @apply motion-reduce:transition-none motion-reduce:hover:translate-y-0;
+  }
+
+  .chip {
+    @apply inline-flex cursor-pointer items-center whitespace-nowrap rounded-full border border-slate-200 bg-slate-100 px-2.5 py-1 text-xs font-semibold text-slate-700 transition-colors;
+  }
+
+  .chip-selected {
+    @apply border-blue-200 bg-blue-50 text-blue-600;
+  }
+
+  .chip-more {
+    @apply inline-flex cursor-pointer items-center rounded-full bg-slate-200 px-2 py-1 text-xs font-bold text-slate-600 transition-colors hover:bg-slate-300 hover:text-slate-800;
+  }
+
+  .facet-row {
+    @apply flex w-full cursor-pointer select-none items-center justify-between rounded-lg px-2.5 py-1.5 text-left text-[13px] transition-colors hover:bg-slate-100;
+    @apply focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-blue-600;
+  }
+
+  .facet-row-on {
+    @apply bg-blue-50 font-semibold text-blue-700 hover:bg-blue-50;
+  }
+
+  .facet-badge {
+    @apply shrink-0 rounded-full bg-slate-100 px-2 py-0.5 text-xs font-semibold text-slate-500;
+  }
+
+  .facet-row-on .facet-badge {
+    @apply bg-blue-100 text-blue-800;
+  }
+
+  .btn-primary {
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-xs transition-colors hover:bg-blue-700;
+  }
+
+  .btn-danger {
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl bg-rose-600 px-4 py-2 text-sm font-semibold text-white shadow-xs transition-colors hover:bg-rose-700;
+  }
+
+  .field {
+    @apply w-full rounded-xl border border-slate-200 bg-white text-slate-900 shadow-xs transition-all placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-hidden;
+  }
+}

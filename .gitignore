@@ -29,3 +29,9 @@ yarn-error.log*
 
 .parcel-cache
 .idea/
+
+# SQLite data (created by the seed / first server start)
+data/
+*.db
+*.db-shm
+*.db-wal
